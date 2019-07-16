@@ -16,13 +16,82 @@ a) Write an enum called `Shape` and give it cases for `triangle`, `rectangle`, `
 
 b) Write a method inside `Shape` that returns how many sides the shape has. Create a variable called `myFavoritePolygon` and assign it to one of the shapes above, then print out how many sides it has.
 
+```swift
+//Q2 Part A and B
+
+enum Shape:String{
+    case triangle = "3 sides"
+    case rectangle = "4 sides"
+    case square = "four sides"
+    case pentagon = "5 sides"
+    case hexagon = "6 sides"
+
+    func findNumberOfSides() -> String{
+        switch self {
+            case .triangle:
+                return Shape.triangle.rawValue
+            case .rectangle:
+                return Shape.rectangle.rawValue
+            case .square:
+                return Shape.square.rawValue
+            case .pentagon:
+                return Shape.pentagon.rawValue
+            case .hexagon:
+                return Shape.hexagon.rawValue
+        }
+    }
+}
+
+var myFavoritePolygon = Shape.rectangle.findNumberOfSides()
+print(myFavoritePolygon)
+```
+
 c) Re-write `Shape` so that each case has an associated value of type Int that will represent the length of the sides (assume the shapes are regular polygons so all the sides are the same length) and write a method inside that returns the perimeter of the shape.
+
+```swift
+//Q2 Part C
+
+enum Shape{
+
+    case triangle(Int)
+    case rectangle(Int)
+    case square(Int)
+    case pentagon(Int)
+    case hexagon(Int)
+
+    func findPerimeter() -> Int{
+        switch self {
+            case .triangle(let length):
+                return length * 3
+            case .rectangle(let length):
+                return length * 4
+            case .square(let length):
+                return length * 4
+            case .pentagon(let length):
+                return length * 5
+            case .hexagon(let length):
+                return length * 6
+        }
+    }
+}
+
+var lengthOfMyTriangle = Shape.triangle(10).findPerimeter()
+print(lengthOfMyTriangle)
+
+
+```
 
 
 ## Question 3
 
 Write an enum called `OperatingSystem` and give it cases for `windows`, `mac`, and `linux`. Create an array of 10 `OperatingSystem` objects where each one is set to a random operating system. Then, iterate through the array and print out a message depending on the operating system.
 
+
+```swift
+
+
+
+```
 
 ## Question 4
 
@@ -81,8 +150,43 @@ var moneyArray:[(Int,CoinType)] = [(10,.penny),
 
 // your code here
 ```
+```swift
+//Q6 Part A
+
+var total = 0
+for i in moneyArray{
+total += (i.0 * i.1.rawValue)
+}; print("\(total) cents")
+
+```
 
 b) Write a method in the `CoinType` enum that returns an Int representing how many coins of that type you need to have a dollar. Then, create an instance of `CoinType` set to `.nickle` and use your method to print out how many nickels you need to have to make a dollar.
+
+```swift
+//Q6 Part B
+enum CoinType: Int {
+    case penny = 1
+    case nickle = 5
+    case dime = 10
+    case quarter = 25
+
+    func howManyCoinsNeededForADollar()->Int{
+        switch self {
+            case .penny:
+        return 100
+            case .nickle:
+        return 20
+            case .dime:
+        return 10
+            case .quarter:
+        return 4
+        }
+    }
+}
+
+var answer6B = CoinType.nickle
+print(answer6B.howManyCoinsNeededForADollar())
+```
 
 
 ## Question 7
