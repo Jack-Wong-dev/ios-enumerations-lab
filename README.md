@@ -20,6 +20,7 @@ var myDevice = iOSDeviceType.iPad
 b) Adjust your code above so that `iPhone` and `iPad` have associated values of type String which represents the model number, eg: `iPhone("6 Plus")`. Use a switch case and let syntax to print out the model number of each device.
 
 ```swift
+//Q1 Solution
 var myDeviceB = iOSDeviceType.iPhone("6")
 
 switch myDeviceB{
@@ -33,6 +34,27 @@ switch myDeviceB{
 
 print(myDeviceB)
 
+```
+```swift
+//Q1 More elaborate solution
+var myDeviceB = iOSDeviceType.iPhone("6")
+var myDeviceC = iOSDeviceType.iPad("Pro 11 Inch")
+var myDeviceD = iOSDeviceType.iWatch("3")
+
+func checkMyModel(device: iOSDeviceType){
+    switch device{
+        case .iPhone(let model):
+            print("iphone \(model)")
+        case  .iPad(let model):
+            print("ipad \(model)")
+        case let .iWatch(model):
+            print("Apple Watch Series \(model)")
+    }
+}
+
+checkMyModel(device: myDeviceB)
+checkMyModel(device: myDeviceC)
+checkMyModel(device: myDeviceD)
 ```
 
 ## Question 2
