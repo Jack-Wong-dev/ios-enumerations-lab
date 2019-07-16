@@ -317,6 +317,58 @@ b) Given the array `poorlyFormattedDays`, write code that will produce an array 
 
 c) Write a method in `DayOfWeek` called `isWeekend` that determines whether a day is part of the weekend or not and write code to calculate how many week days appear in `poorlyFormattedDays`. z1zxq   
 
+```swift
+enum DayOfWeek:String{
+    case sunday = "sunday"
+    case monday = "monday"
+    case tuesday = "tuesday"
+    case wednesday = "wednesday"
+    case thursday = "thursday"
+    case friday = "friday"
+    case saturday = "saturday"
+
+    func isWeekend()->Bool{
+        switch self{
+        case .sunday:
+            return true
+        case .monday:
+            return false
+        case .tuesday:
+            return false
+        case .wednesday:
+            return false
+        case .thursday:
+            return false
+        case .friday:
+            return false
+        case .saturday:
+            return true
+        }
+    }
+}
+
+let poorlyFormattedDays = ["MONDAY", "wednesday", "Sunday", "monday", "Tuesday", "WEDNESDAY", "thursday", "SATURDAY", "tuesday", "FRIDAy", "Wednesday", "Monday", "Friday", "sunday"]
+
+var properlyFormattedDays = [DayOfWeek]()
+
+for i in poorlyFormattedDays{
+    if let d = DayOfWeek.init(rawValue: i.lowercased()){
+        properlyFormattedDays.append(d)
+    }
+}
+var answer = properlyFormattedDays.map {$0.rawValue}
+//print(properlyFormattedDays)
+print(answer)
+
+var weekendCount = 0
+for i in poorlyFormattedDays{
+    if let d = DayOfWeek.init(rawValue: i.lowercased()){
+        if d.isWeekend() {
+            weekendCount += 1
+        }
+    }
+}; print("Number of weekends in the array: \(weekendCount)")
+```
 
 ## Question 8
 
