@@ -113,8 +113,25 @@ Write an enum called `OperatingSystem` and give it cases for `windows`, `mac`, a
 
 
 ```swift
+enum OperatingSystem: CaseIterable {
+    case windows
+    case mac
+    case linux
+}
 
 
+var something = [OperatingSystem.windows,OperatingSystem.mac,OperatingSystem.linux,OperatingSystem.linux,OperatingSystem.linux,OperatingSystem.mac,OperatingSystem.windows,OperatingSystem.mac,OperatingSystem.windows,OperatingSystem.linux]
+
+for i in something{
+    switch i {
+        case .linux:
+            print("It's Linux!")
+        case .windows:
+            print("It's Windows!")
+        case .mac:
+            print("It's Mac!")
+    }
+}
 
 ```
 
@@ -140,6 +157,32 @@ var location = (x: 0, y: 0)
 var steps: [Direction] = [.up, .up, .left, .down, .left]
 
 // your code here
+```
+```swift
+
+enum Direction {
+    case up
+    case down
+    case left
+    case right
+}
+
+var location = (x: 0, y: 0)
+var steps: [Direction] = [.up, .up, .left, .down, .left]
+
+for i in steps{
+    switch i {
+        case .up:
+            location.1 += 1
+        case .down:
+            location.1 -= 1
+        case .left:
+            location.0 -= 1
+        case .right:
+            location.0 += 1
+        }
+    }
+print(location)
 ```
 
 
@@ -272,7 +315,7 @@ b) Given the array `poorlyFormattedDays`, write code that will produce an array 
 
 `let poorlyFormattedDays = ["MONDAY", "wednesday", "Sunday", "monday", "Tuesday", "WEDNESDAY", "thursday", "SATURDAY", "tuesday", "FRIDAy", "Wednesday", "Monday", "Friday", "sunday"]`
 
-c) Write a method in `DayOfWeek` called `isWeekend` that determines whether a day is part of the weekend or not and write code to calculate how many week days appear in `poorlyFormattedDays`.
+c) Write a method in `DayOfWeek` called `isWeekend` that determines whether a day is part of the weekend or not and write code to calculate how many week days appear in `poorlyFormattedDays`. z1zxq   
 
 
 ## Question 8
@@ -283,9 +326,56 @@ b) Modify your enum so that each case has an associated value of either Characte
 
 c) Write code that prints the train letter or number of your instance of `MetroLine`.
 
+```swift
+enum MetroLine{
+    case red(Int)
+    case green(Int)
+    case orange(String)
+}
+
+var answerA = MetroLine.red
+
+var answerB = MetroLine.red(1)
+
+switch answerB {
+    case .red(let number):
+        print("\(number)")
+    case .green(let number):
+        print("\(number)")
+    case .orange(let number):
+        print("\(number)")
+}
+
+```
 
 ## Question 9
 
 a) Think of your own example of something that can be modeled as an enum and write it. Remember that enums allow you to create instances of a defined list of cases.
 
 b) Add a method to your enum.... try to have the method make sense.
+
+```swift
+enum RickSanchez{
+
+    case Pickle
+    case Tiny
+    case Doofus
+    case Simple
+
+    func isAsshole()->Bool{
+        switch self {
+            case .Pickle:
+                return true
+            case .Tiny:
+                return true
+            case .Doofus:
+                return false
+            case .Simple:
+                return false
+        }
+    }
+}
+
+var rickC137 = RickSanchez.Pickle
+print(rickC137.isAsshole())
+```
