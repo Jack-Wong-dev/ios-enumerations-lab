@@ -7,8 +7,33 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 
 a) Define an enumeration called `iOSDeviceType` with member values `iPhone`, `iPad`, `iWatch`. Create a variable called `myDevice` and assign it one member value.
 
+```swift
+enum iOSDeviceType{
+    case iPhone(String)
+    case iPad(String)
+    case iWatch
+}
+
+var myDevice = iOSDeviceType.iPad
+
+```
 b) Adjust your code above so that `iPhone` and `iPad` have associated values of type String which represents the model number, eg: `iPhone("6 Plus")`. Use a switch case and let syntax to print out the model number of each device.
 
+```swift
+var myDeviceB = iOSDeviceType.iPhone("6")
+
+switch myDeviceB{
+    case .iPhone(let model):
+        print("iphone \(model)")
+    case .iPad:
+        print("")
+    case .iWatch:
+        print("")
+}
+
+print(myDeviceB)
+
+```
 
 ## Question 2
 
@@ -128,6 +153,56 @@ c) Write a function called `match` that takes two `HandShapes` and returns a `Ma
 
 Hint: Rock beats scissors, paper beats rock, scissor beats paper
 
+```swift
+enum HandShape{
+    case rock
+    case paper
+    case scissors
+}
+
+enum MatchResult{
+    case win
+    case draw
+    case lose
+}
+
+func match(firstPlayer:HandShape,secondPlayer:HandShape)->MatchResult{
+    switch firstPlayer {
+        case .rock:
+            switch secondPlayer {
+                case .rock:
+                    return MatchResult.draw
+                case .paper:
+                    return MatchResult.lose
+                case .scissors:
+                    return MatchResult.win
+    }
+    case .paper:
+        switch secondPlayer {
+            case .rock:
+                return MatchResult.win
+            case .paper:
+                return MatchResult.draw
+            case .scissors:
+                return MatchResult.lose
+    }
+    case .scissors:
+        switch secondPlayer {
+            case .rock:
+                return MatchResult.lose
+            case .paper:
+                return MatchResult.win
+            case .scissors:
+                return MatchResult.draw
+        }
+    }
+}
+
+var Jack = HandShape.paper
+var Jackass = HandShape.rock
+
+print(match(firstPlayer: Jack, secondPlayer: Jackass))
+```
 
 ## Question 6
 
